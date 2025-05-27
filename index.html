@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quasar Cup</title>
+    <link rel="icon" href="logoquasar.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+
+    <style>
+        /* ADD THIS CSS TO YOUR styles123.css FILE */
+
+        /* Burger Menu Styles */
+        .burger-menu {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            /* Higher than overlay to stay on top */
+            background: rgba(75, 0, 130, 0.9);
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .burger-menu:hover {
+            background: rgba(138, 43, 226, 0.9);
+            transform: scale(1.05);
+        }
+
+        .burger-icon {
+            width: 25px;
+            height: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .burger-line {
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animation for burger menu when active - transforms to X */
+        .burger-menu.active .burger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .burger-menu.active .burger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active .burger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #4b0082, #8a2be2);
+            z-index: 1000;
+            /* Below burger button */
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .mobile-nav-overlay.active {
+            left: 0;
+        }
+
+        .mobile-nav-content {
+            text-align: center;
+            padding: 80px 20px 20px 20px;
+            /* Added top padding to create space below burger button */
+        }
+
+        .mobile-nav-content a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 20px 0;
+            padding: 15px 30px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-nav-content a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-nav-content a i {
+            margin-right: 10px;
+        }
+
+        /* Language switcher in mobile menu */
+        .mobile-lang-switcher {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .mobile-lang-switcher button {
+            padding: 10px 20px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .mobile-lang-switcher button.active,
+        .mobile-lang-switcher button:hover {
+            background: white;
+            color: #4b0082;
+        }
+
+        /* Hide desktop navigation on mobile */
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: block;
+            }
+
+            .navigation {
+                display: none !important;
+            }
+
+            .lang-switcher {
+                display: none;
+            }
+
+            /* Adjust header padding for mobile */
+            .header {
+                padding: 15px 0;
+            }
+
+            .logo img {
+                max-width: 300px;
+            }
+
+            /* Adjust content padding to avoid burger menu overlap */
+            .content {
+                padding-top: 20px;
+            }
+        }
+
+        .bottom-text {
+            font-size: 24px;
+            letter-spacing: 2px;
+            padding-left: 0;
+            /* This aligns the C with the Q */
+        }
+
+        .team-member-photo {
+            border: 3px solid #4b0082;
+            /* Purple border matching your header gradient */
+            border-radius: 10px;
+            /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Subtle shadow for depth */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Smooth transition for hover effect */
+        }
+
+        .footer-logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            line-height: 0.9;
+            text-align: left;
+        }
+
+        .top-text {
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .bottom-text {
+            font-size: 24px;
+            letter-spacing: 2px;
+            padding-left: 0;
+            /* This aligns the C with the Q */
+        }
+
+        .team-member-photo:hover {
+            transform: translateY(-5px);
+            /* Slight lift effect on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            /* Enhanced shadow on hover */
+        }
+
+        /* Footer CSS */
+        .site-footer {
+            background: linear-gradient(135deg, #4b0082, #8a2be2);
+            color: #f8f9fa;
+            padding: 20px 0;
+            width: 100%;
+            margin-top: 40px;
+            clear: both;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo img {
+            max-height: 50px;
+            width: auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .social-icon {
+            color: #f8f9fa;
+            font-size: 18px;
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: #ff6b6b;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Remove underlines from all footer links */
+        .site-footer a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ADD THIS HTML RIGHT AFTER THE OPENING <body> TAG -->
+    <button class="burger-menu" id="burgerMenu">
+        <div class="burger-icon">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+    </button>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <!-- English Mobile Menu -->
+            <div id="mobile-nav-en" class="mobile-nav-lang" style="display: none;">
+                <a href="#" onclick="showPage('home'); closeMobileMenu();">
+                    <i class="fas fa-home"></i> HOME
+                </a>
+                <a href="#" onclick="showPage('about'); closeMobileMenu();">
+                    <i class="fas fa-info-circle"></i> ABOUT
+                </a>
+                <a href="#" onclick="showPage('participate'); closeMobileMenu();">
+                    <i class="fas fa-user-plus"></i> PARTICIPATE
+                </a>
+                <a href="#" onclick="showPage('archive'); closeMobileMenu();">
+                    <i class="fas fa-archive"></i> ARCHIVE
+                </a>
+                <a href="#" onclick="showPage('links'); closeMobileMenu();">
+                    <i class="fas fa-link"></i> LINKS
+                </a>
+                <a href="#" onclick="showPage('contact'); closeMobileMenu();">
+                    <i class="fas fa-envelope"></i> CONTACT
+                </a>
+                <a href="#" onclick="showPage('news'); closeMobileMenu();">
+                    <i class="fas fa-newspaper"></i> NEWS
+                </a>
+            </div>
+
+            <!-- Romanian Mobile Menu -->
+            <div id="mobile-nav-ro" class="mobile-nav-lang" style="display: block;">
+                <a href="#" onclick="showPage('home'); closeMobileMenu();">
+                    <i class="fas fa-home"></i> ACASĂ
+                </a>
+                <a href="#" onclick="showPage('about'); closeMobileMenu();">
+                    <i class="fas fa-info-circle"></i> DESPRE
+                </a>
+                <a href="#" onclick="showPage('participate'); closeMobileMenu();">
+                    <i class="fas fa-user-plus"></i> PARTICIPĂ
+                </a>
+                <a href="#" onclick="showPage('archive'); closeMobileMenu();">
+                    <i class="fas fa-archive"></i> ARHIVĂ
+                </a>
+                <a href="#" onclick="showPage('links'); closeMobileMenu();">
+                    <i class="fas fa-link"></i> LINKURI
+                </a>
+                <a href="#" onclick="showPage('contact'); closeMobileMenu();">
+                    <i class="fas fa-envelope"></i> CONTACT
+                </a>
+                <a href="#" onclick="showPage('news'); closeMobileMenu();">
+                    <i class="fas fa-newspaper"></i> ȘTIRI
+                </a>
+            </div>
+
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-lang-switcher">
+                <button onclick="switchLanguage('ro')" class="active" id="mobile-ro-btn">RO</button>
+                <button onclick="switchLanguage('en')" id="mobile-en-btn">EN</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="header">
+        <div class="logo">
+            <img src="C:\Users\Admin\Downloads\Untitled design (1).png" width="500">
+
+        </div>
+    </div>
+    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" Your
+        HTML content here -->
+    <div class="lang-switcher">
+        <button onclick="switchLanguage('ro')" class="active" id="ro-btn">RO</button>
+        <button onclick="switchLanguage('en')" id="en-btn">EN</button>
+    </div>
+    <!--  -->
+    <div class="navigation lang-content" id="nav-en" style="display: none;">
+        <a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> HOME</a>
+        <a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> ABOUT</a>
+        <a href="#" onclick="showPage('participate')"><i class="fas fa-user-plus"></i> PARTICIPATE</a>
+        <a href="#" onclick="showPage('archive')"><i class="fas fa-archive"></i> ARCHIVE</a>
+        <a href="#" onclick="showPage('links')"><i class="fas fa-link"></i> LINKS</a>
+        <a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> CONTACT</a>
+        <a href="#" onclick="showPage('news')"><i class="fas fa-newspaper"></i> NEWS</a>
+    </div>
+    <!-- Romanian Navigation -->
+    <div class="navigation lang-content active" id="nav-ro" style="display: block;">
+        <a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> ACASĂ</a>
+        <a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> DESPRE</a>
+        <a href="#" onclick="showPage('participate')"><i class="fas fa-user-plus"></i> PARTICIPĂ</a>
+        <a href="#" onclick="showPage('archive')"><i class="fas fa-archive"></i> ARHIVĂ</a>
+        <a href="#" onclick="showPage('links')"><i class="fas fa-link"></i> LINKURI</a>
+        <a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> CONTACT</a>
+        <a href="#" onclick="showPage('news')"><i class="fas fa-newspaper"></i> ȘTIRI</a>
+    </div>
+    <!-- English Content -->
+    <div id="content-en" class="lang-content">
+        <!-- Home Page -->
+        <div id="home-en" class="content page-content ">
+            <h1>Quasar Cup 2025</h1>
+
+            <div class="registration">
+                <a href="#" onclick="showPage('participate')">Quasar Cup 2025 registration</a>
+            </div>
+
+
+            <div class="info-box">
+                <h2>Welcome to Quasar Cup 2025 first edition!</h2>
+                <p>Quasar Cup is an physics competition for highschool students and udergraduates from all over the
+                    world. The
+                    competition
+                    challenges participants to solve complex physics and/or astrophysics problems, encouraging
+                    innovative thinking and
+                    advanced scientific knowledge.</p>
+                <p>Join thousands of talented students from across the globe in this competition.
+                    Registration is now open for the 2025 first edition!</p>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-en" class="content page-content">
+            <h1>About Quasar Cup</h1>
+
+            <div class="about-box">
+                <div class="team-member">
+                    <img src="images\bogdan1.jpg" alt="Ciocârlan Bogdan-Mihai" class="team-member-photo" width="300"
+                        height="300">
+                    <div class="team-member-info">
+                        <b>Ciocârlan Bogdan-Mihai</b>
+                        <p>Hi! I'm Bogdan and I love physics and astronomy. Last year I won the gold medal at IOAA, and
+                            this
+                            experience has shown me how fascinating the Universe can be when you look at it through the
+                            lens
+                            of science. I'm looking forward to helping you discover physics in a new way, with clear and
+                            diverse examples that will stimulate your curiosity. I want to collaborate openly, and for
+                            you to be not
+                            only my students, but also my friends in this adventure of knowledge!</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="images\darius.jpg" alt="Darius Graur" class="team-member-photo" width="300" height="300">
+                    <div class="team-member-info">
+                        <b>Darius Graur</b>
+                        <p>Hi! I'm Darius and I'm passionate about physics. I participated in IPhO and had the
+                            opportunity to
+                            deepen essential concepts in physics. The contest is for me a way to
+                            share this enthusiasm with you and encourage the deepening of scientific knowledge
+                            in an interactive and challenging way. I look forward to collaborating with each of you
+                            to explore as many fascinating aspects of physics as possible.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="images\vlad.jpg" alt="Vlad Smochină" class="team-member-photo" width="300" height="300">
+                    <div class="team-member-info">
+                        <b>Vlad Smochină</b>
+                        <p>Hello! My name is Vlad and I am an Olympian in mathematics and astronomy. I have had the
+                            privilege
+                            of participating in various international competitions and I want to support the development
+                            of a passion for science among young talents. This competition is an ideal
+                            setting to learn and face interesting challenges, and my goal is to guide
+                            you on this path of learning and discovery.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="images\alex.jpg" alt="Alex Secrieru" class="team-member-photo" width="300" height="300">
+                    <div class="team-member-info">
+                        <b>Alex Secrieru</b>
+                        <p>Hi! I'm Alex Secrieru and I'm passionate about physics and how this science helps us to
+                            understand the world in depth. This year I had the honor of representing Moldova at the
+                            International Physics Olympiad (IPhO & EuPho), from where I returned with 2 bronze medals.
+                            It was an intense experience, which showed me how beautiful and challenging physics can be
+                            when you really look at it. I want to show you that physics is not just about theory, but
+                            also intuition, discovery and the joy of asking questions. I hope we can learn together, in
+                            an open, clear and friendly way. Let's make physics an adventure of knowledge!</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="images\paul.jpg" alt="Paul Tichișanu" class="team-member-photo" width="300" height="300">
+                    <div class="team-member-info">
+                        <b>Paul Tichișanu</b>
+                        <p>Hello! I am Paul Tichişanu and I am passionate about physics and astrophysics, two fields
+                            that fascinate me by the way they explain the Universe and the laws that govern it. For
+                            several years, I have been participating in national and international Olympiads, and
+                            recently I represented Moldova at the IOAA Junior – an experience that further strengthened
+                            my desire to explore the cosmos through the eyes of science. I love to learn, share what I
+                            know and transform complicated things into clear and interesting ideas. I also created this
+                            site, out of the desire to bring science closer to you. I hope you find it useful, inspiring
+                            and that we become colleagues in a fascinating adventure through the world of physics!</p>
+                    </div>
+                </div>
+
+                <h2>About the contest</h2>
+                <p>A participant can register for up to two probes: one in Physics and one in Astrophysics. Each probe
+                    consists of solving four problems of increasing difficulty over the course of one month.
+                    Participation in one or both probes is allowed.
+
+                    The rankings will be separated into two categories: international and Romanian/Moldovan
+                    participants. The top 3 winners in the local (Romanian/Moldovan) cup will receive medals and printed
+                    diplomas (or other branded merch in the futures).
+
+                    International participants will receive electronic diplomas and, of course, valuable experience for
+                    future Olympiads and the Physics Cup. <i> (Please note that physical prizes for international
+                        participants are not available due to high delivery costs and additional taxes.)</i></p>
+
+                <h2>Competition Format</h2>
+
+                <b>Two probes, consisting of 4 problems:</b>
+                <p>One in astronomy/astrophysics and one in physics, each with problems of increasing difficulty.
+                </p>
+                <b>Time for solving the problems:</b>
+                <p> 1 month for both probes.</p>
+                <b>Hints:</b>
+                <p>Published a week after the problems were released.
+                    This is intended to provide information
+                    needed to help you solve the problems and support you in deepening your knowledge.
+                </p>
+                <b>Scoring:</b>
+                <p>Each problem has a score of 100 points, with a 50% bonus for solutions submitted in the first
+                    week.
+                </p>
+
+
+                <b> Penalty:</b>
+                <p>10% penalty for incorrect attempts on individual sub-points.</p>
+            </div>
+        </div>
+
+        <!-- Participate Page -->
+        <div id="participate-en" class="content page-content">
+            <h1>How to Participate</h1>
+
+            <div class="participate-box">
+                <h2>Registration Process</h2>
+                <p>Registration for Quasar Cup 2025 is 2 weeks before the competition. To register,
+                    students must complete the google forms link displayed on the website.</p>
+
+                <h2>Eligibility</h2>
+                <p>Quasar Cup is open to high school and undergraduate students worldwide who have not yet completed
+                    their first degree. There are no age restrictions, though participants age should typically range
+                    from 16
+                    to 22.</p>
+
+                <h2>Competition Schedule</h2>
+                <p>The 2025 competition will begin on June 1st, 2025. Problems are released on a scheduled basis, with
+                    specific deadlines for submissions.</p>
+
+                <div class="registration" style="margin-top: 30px;">
+                    <a href="https://forms.gle/2DvaJfCgG1jizuzX6">Register Now for the next Quasar Cup</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archive Page -->
+        <div id="archive-en" class="content page-content">
+            <h1>Archive of Past Competitions</h1>
+
+            <div class="archive-box">
+                <h2>Past Winners</h2>
+                <p>Browse through our hall of fame featuring winners from previous Quasar Cup competitions.</p>
+
+                <h2>Problem Sets</h2>
+                <p>Access problem sets, solutions, and winning submissions from previous years. These resources are
+                    invaluable for preparation and understanding the competition's standards.</p>
+
+                <ul>
+                    <li><a href="#">Quasar Cup May</a></li>
+                    <li><a href="#">Quasar Cup June</a></li>
+                    <li><a href="#">Quasar Cup July</a></li>
+                    <li><a href="#">Quasar Cup August</a></li>
+                    <li><a href="#">Quasar Cup September</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Links Page -->
+        <div id="links-en" class="content page-content">
+            <h1>Useful Links</h1>
+
+            <div class="links-box">
+                <h2>Physics Resources</h2>
+
+                <div class="links-grid">
+                    <div class="link-item">
+                        <h3>Physics Education</h3>
+                        <p>Free resources for physics students and educators.</p>
+                        <a href="#">Visit Website</a>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>Problem-Solving Techniques</h3>
+                        <p>Learn advanced methods for solving physics problems.</p>
+                        <a href="#">Visit Website</a>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>Physics Journals</h3>
+                        <p>Access to academic journals and publications.</p>
+                        <a href="#">Visit Website</a>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>Simulation Tools</h3>
+                        <p>Interactive tools for physics simulations.</p>
+                        <a href="#">Visit Website</a>
+                    </div>
+                </div>
+
+                <h2>Partner Organizations</h2>
+
+                <div class="links-grid">
+                    <div class="link-item">
+                        <h3>International Physics Olympiad</h3>
+                        <p>Official website of the IPhO competition.</p>
+                        <a href="#">Visit Website</a>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>European Physics Society</h3>
+                        <p>Organization promoting physics in Europe.</p>
+                        <a href="#">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Contact Page -->
+        <div id="contact-en" class="content page-content">
+            <h1>Contact Us</h1>
+
+            <div class="contact-box">
+                <h2>Get in Touch</h2>
+                <p>Have questions about Quasar Cup? Our team is here to help. Fill out the form below or contact us
+                    directly at quasarcup2025@gmail.com .</p>
+
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- News Page -->
+        <div id="news-en" class="content page-content">
+            <h1>Latest News</h1>
+
+            <div class="news-box">
+                <div class="news-item">
+                    <div class="news-date">June 1st, 2025</div>
+                    <h3 class="news-title">Quasar Cup 2025 Competition Begins</h3>
+                    <p>The 2025 edition of Quasar Cup has officially begun! The first problem set is now available
+                        for
+                        all registered participants.</p>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">August 16th, 2025</div>
+                    <h3 class="news-title">Registration Opens for Quasar Cup 2025</h3>
+                    <p>Students worldwide can now register for the 2025 Quasar Cup competition. Early registration
+                        is
+                        encouraged as we anticipate high participation this year.</p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Romanian Page -->
+    <!-- Romanian Content -->
+    <div id="content-ro" class="lang-content active">
+        <!-- Home Page -->
+
+        <div id="home-ro" class="content page-content active">
+            <h1>Quasar Cup 2025</h1>
+
+            <div class="registration">
+                <a href="#" onclick="showPage('participate')">Înregistrare pentru Quasar Cup 2025</a>
+            </div>
+
+
+            <div class="info-box">
+                <h2>Bine ați venit la Quasar 2025 ediția 1!</h2>
+                <p>Quasar Cup este un concurs internațională de fizică/astrofizică pentru studenți școlari și
+                    universitari din Republica Moldova și
+                    România. Competiția provoacă participanții să rezolve probleme complexe de fizică și de astrofizică,
+                    încurajând gândirea inovatoare și avansând cunoștințele științifice. În urma acestei competiții,
+                    participanții dobândesc experiență pentru alte concursuri și olimpiezi precum IPhO/EuPhO/APhO/IOAA
+                    și Physics Cup.
+                    Alăturați-vă în această prestigioasă competiție. Înregistrarea este acum deschisă pentru ediția 1
+                    din
+                    2025!</p>
+            </div>
+        </div>
+
+        <!-- About Page ro -->
+        <div id="about-ro" class="content page-content">
+            <h1>About Quasar Cup</h1>
+
+            <div class="about-box">
+                <div class="team-member">
+                    <img src="images\bogdan1.jpg" alt="Ciocârlan Bogdan-Mihai" class="team-member-photo" width="300"
+                        height="300">
+                    <div class="team-member-info">
+                        <b>Ciocârlan Bogdan-Mihai</b>
+                        <p>Salut! Sunt Bogdan și iubesc fizica și astronomia. Anul acesta am câștigat medalia de aur la
+                            IOAA, iar
+                            această
+                            experiență mi-a arătat cât de fascinant poate fi Universul atunci când îl privești prin
+                            lentila
+                            științei. Aștept cu nerăbdare să vă ajut să descoperiți fizica într-un mod nou, cu exemple
+                            clare și variate care să vă stimuleze curiozitatea. Îmi doresc să colaborăm deschis și ca
+                            voi să fiți nu doar studenții mei, ci și prietenii mei în această aventură a cunoașterii!
+                        </p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="images\darius.jpg" alt="Darius Graur" class="team-member-photo" width="300" height="300">
+                    <div class="team-member-info">
+                        <b>Darius Graur</b>
+                        <p>Bună! Sunt Darius și sunt pasionat de fizică. Am participat la IPhO și am avut ocazia să
+                            aprofundez concepte esențiale din fizică. Concursul este pentru mine o modalitate de a
+                            împărtăși acest entuziasm cu voi și de a încuraja aprofundarea cunoștințelor științifice
+                            într-un mod interactiv și provocator. Aștept cu nerăbdare să colaborez cu fiecare dintre voi
+                            pentru a explora cât mai multe aspecte fascinante ale fizicii.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="images\vlad.jpg" alt="Vlad Smochină" class="team-member-photo" width="300" height="300">
+                    <div class="team-member-info">
+                        <b>Vlad Smochină</b>
+                        <p>Bună! Numele meu este Vlad și sunt olimpic la matematică și astronomie. Am avut privilegiul
+                            de a participa la diverse competiții internaționale și îmi doresc să sprijin dezvoltarea
+                            pasiunii pentru știință în rândul tinerelor talente. Acest concurs reprezintă un cadru ideal
+                            pentru a învăța și pentru a înfrunta provocări interesante, iar scopul meu este să vă ghidez
+                            pe acest drum al învățării și descoperirii.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="images\alex.jpg" alt="Alex Secrieru" class="team-member-photo" width="300" height="300">
+                    <div class="team-member-info">
+                        <b>Alex Secrieru</b>
+                        <p>Bună! Sunt Alex Secrieru și sunt pasionat de fizică și de felul în care această știință ne
+                            ajută să înțelegem lumea în profunzime. Anul acesta am avut onoarea să reprezint Moldova la
+                            Olimpiada Internațională de Fizică (IPhO & EuPho), de unde m-am întors cu 2 medalii de
+                            bronz.
+                            A fost o
+                            experiență intensă, care mi-a demonstrat cât de frumoasă și provocatoare poate fi fizica
+                            atunci când o privești cu adevărat. Vreau să vă arăt că fizica nu înseamnă doar teorie, ci
+                            și intuiție, descoperire și bucuria de a pune întrebări. Sper să învățăm împreună, într-un
+                            mod deschis, clar și prietenos. Hai să facem din fizică o aventură a cunoașterii!</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="images\paul.jpg" alt="Paul Tichișanu" class="team-member-photo" width="300" height="300">
+                    <div class="team-member-info">
+                        <b>Paul Tichișanu</b>
+                        <p>Salut! Sunt Paul Tichişanu și sunt pasionat de fizică și astrofizică, două domenii care mă
+                            fascinează prin felul în care explică Universul și legile care îl guvernează. De câțiva ani
+                            particip la olimpiade naționale și internaționale, iar recent am reprezentat Moldova la IOAA
+                            Junior – o experiență care mi-a întărit și mai mult dorința de a explora cosmosul prin ochii
+                            științei. Îmi place să învăț, să împărtășesc ce știu și să transform lucrurile complicate în
+                            idei clare și interesante. Tot eu am creat acest site, din dorința de a aduce știința mai
+                            aproape de voi. Sper să vă fie util, inspirațional și să devenim colegi într-o aventură
+                            fascinantă prin lumea fizicii!</p>
+                    </div>
+                </div>
+
+                <h2>Descrierea concursului</h2>
+                <p>Concursul constă într-o serie de competiții
+                    lunare, fiecare ediție incluzând două
+                    probe - una de astronomie și
+                    una de fizică, fiecare având 4 probleme concepute de autori respectivi. Problemele au
+                    dificultate crescatoare, fiecare având
+                    subpuncte ce necesită cunoștințe
+                    aprofundate. După o săptămână de la
+                    publicarea problemelor, participanților li se
+                    ofera un handout cu teoria necesară, iar la
+                    sfârșitul lunii se publică soluțiile și
+                    rezultatele. Clasamentul va include atât o
+                    secțiune cumulată, cât și clasamente
+                    separate pentru fiecare problemă. Premii
+                    simbolice sunt acordate câstigătorilor.</i></p>
+
+                <h2>Formatul concursului</h2>
+                <b> Două probe principale:</b>
+                <p>Una de
+                    astronomie-astrofizică și una de fizică,
+                    fiecare având 4 probleme cu subpuncte de dificultate
+                    crescătoare.</p>
+                <b>Timp de rezolvare:</b>
+                <p> O lună pentru
+                    soluționare.</p>
+                <b>Handout teoretic</b>
+                <p>Puteți să-l găsiți pe pagina de linkuri, vă va îndruma la rezolvarea problemelor, va fi uploadat 1
+                    saptămână după startul concursului.
+                </p>
+                <b>Punctare:</b>
+                <p>Fiecare problemă are un punctaj
+                    de 100 de puncte, cu bonus de 50% pentru
+                    soluțiile trimise în prima săptămână.</p>
+
+
+                <b> Penalizare:</b>
+                <p>Penalizare de 10% pentru
+                    încercările greșite la subpunctele
+                    individuale.</p>
+
+                <h2>Regulament</h2>
+                <p> 1. Concursul lunar publică patru probleme
+                    cu scopul de a fi rezolvate competitiv,
+                    oferind materiale teoretice și soluții
+                    detaliate. </p>
+
+                <p>2. Participanții se înscriu pe Google Forms și
+                    trimit soluțiile scanate sau în format
+                    LaTeX pe e-mail. </p>
+
+                <p>3. Punctaj: Fiecare problemă valorează 100
+                    de puncte; bonus de 50% pentru soluțiile
+                    din prima săptămână, cu penalizare de
+                    10% pentru subpunctele greșite.
+                    Rezultatele vor fi trimise săptămânal.</p>
+            </div>
+        </div>
+
+        <!-- Participate Page ro -->
+        <div id="participate-ro" class="content page-content">
+            <h1>Cum să Participi</h1>
+
+            <div class="participate-box">
+                <h2>Procesul de Înregistrare</h2>
+                <p>Înscrierea la concursul Quasar se realizează prin Google Forms, cu două săptămâni înainte de data
+                    concursului.</p>
+
+                <h2>Eligibilitate</h2>
+                <p>Quasar Cup este deschis elevilor de liceu și studenților din întreaga lume care nu și-au finalizat
+                    încă
+                    diploma universitară. Participanții trebuie să aibă până la 21 de ani în ziua concursului.
+                </p>
+
+                <h2>Programul Competiției</h2>
+                <p>Competiția 2025 a început pe 00.00.2025.
+                    Problemele sunt publicate pe baza unui program stabilit, cu termene specifice pentru trimiteri.</p>
+
+                <div class="registration" style="margin-top: 30px;">
+                    <a href="https://forms.gle/Vaxzq83Ni5iN1sMC6">Înregistrează-te Acum pentru Quasar Cup 2025</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archive Page -->
+        <div id="archive-ro" class="content page-content">
+            <h1>Arhiva Competițiilor Anterioare</h1>
+
+            <div class="archive-box">
+                <h2>Câștigătorii Anteriori</h2>
+                <p>Răsfoiți galeria noastră de onoare cu câștigătorii din competițiile Quasar Cup anterioare.</p>
+
+                <h2>Seturi de Probleme</h2>
+                <p>În această secțiune veți găsi problemele din
+                    edițiile trecute ale concursului, împreună cu
+                    soluțiile oficiale și baremele de punctaj.</p>
+
+                <ul>
+                    <li><a href="#">Quasar Cup ediția 5</a></li>
+                    <li><a href="#">Quasar Cup ediția 4</a></li>
+                    <li><a href="#">Quasar Cup ediția 3</a></li>
+                    <li><a href="#">Quasar Cup ediția 2</a></li>
+                    <li><a href="#">Quasar Cup ediția 1</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Links Page -->
+        <div id="links-ro" class="content page-content">
+            <h1>Linkuri Utile</h1>
+
+            <div class="links-box">
+                <h2>Resurse de Fizică</h2>
+
+                <div class="links-grid">
+                    <div class="link-item">
+                        <h3>Educație în Fizică </h3>
+                        <p>Resurse gratuite pentru studenți și educatori în fizică.</p>
+                        <a href="#">Vizitează Site-ul</a>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>Tehnici de Rezolvare a Problemelor</h3>
+                        <p>Învățați metode avansate pentru rezolvarea problemelor de fizică.</p>
+                        <a href="#">Vizitează Site-ul</a>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>Jurnale de Fizică</h3>
+                        <p>Acces la jurnale academice și publicații.</p>
+                        <a href="#">Vizitează Site-ul</a>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>Instrumente de Simulare</h3>
+                        <p>Instrumente interactive pentru simulări de fizică.</p>
+                        <a href="#">Vizitează Site-ul</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-ro" class="content page-content">
+            <h1>Contactează-ne</h1>
+
+            <div class="contact-box">
+                <h2>Ia Legătura cu Noi</h2>
+                <p>Ai întrebări despre Quasar Cup? Echipa noastră este aici pentru a ajuta. Completează formularul de
+                    mai jos sau contactează-ne direct la quasarcup2025@gmail.com</p>
+
+                <form class="contact-form">
+                    <input type="text" placeholder="Numele Tău" required>
+                    <input type="email" placeholder="Email-ul Tău" required>
+                    <input type="text" placeholder="Subiect" required>
+                    <textarea placeholder="Mesajul Tău" required></textarea>
+                    <button type="submit">Trimite Mesajul</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- News Page -->
+        <div id="news-ro" class="content page-content">
+            <h1>Ultimele Știri</h1>
+
+            <!-- <div class="news-box">
+                <div class="news-item">
+                    <div class="news-date">13 Octombrie 2024</div>
+                    <h3 class="news-title">Competiția Quasar Cup 2025 Începe</h3>
+                    <p>Ediția 2025 a Quasar Cup a început oficial! Primul set de probleme este acum disponibil pentru
+                        toți participanții înregistrați.</p>
+                </div> -->
+
+            <div class="news-item">
+                <div class="news-date">26 Mai 2025</div>
+                <h3 class="news-title">Se Deschide Înregistrarea pentru Quasar Cup 2025</h3>
+                <p>Studenții din întreaga lume se pot înregistra acum pentru competiția Quasar Cup 2025.
+                    Înregistrarea timpurie este încurajată deoarece anticipăm o participare ridicată anul acesta.
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="top-text">QUASAR</div>
+                <div class="bottom-text">CUP</div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/quasarcup/" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Quasar Cup. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="script.js"></script>
+    <script>
+        function showPage(pageId) {
+            const currentLang = window.currentLanguage || 'ro';
+
+            // Hide all page content for current language
+            const currentContent = document.getElementById('content-' + currentLang);
+            if (currentContent) {
+                const allPages = currentContent.querySelectorAll('.page-content');
+                allPages.forEach(page => {
+                    page.classList.remove('active');
+                    page.style.display = 'none';
+                });
+
+                // Show the selected page
+                const selectedPage = document.getElementById(pageId + '-' + currentLang);
+                if (selectedPage) {
+                    selectedPage.classList.add('active');
+                    selectedPage.style.display = 'block';
+                }
+            }
+        }
+        function initializeLanguageState() {
+            // Set initial language (default to Romanian)
+            window.currentLanguage = 'ro';
+
+            // Set initial active states for mobile buttons
+            updateMobileLanguageButtons('ro');
+
+            // Show correct mobile navigation
+            showMobileNavForLanguage('ro');
+
+            // Add this line to show the home page initially
+            showPage('home');
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const burgerMenu = document.getElementById('burgerMenu');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            let isMenuOpen = false;
+
+            // Toggle mobile menu function
+            function toggleMobileMenu() {
+                isMenuOpen = !isMenuOpen;
+
+                if (isMenuOpen) {
+                    // Open menu
+                    burgerMenu.classList.add('active');
+                    mobileNavOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    // Close menu
+                    burgerMenu.classList.remove('active');
+                    mobileNavOverlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            // Close mobile menu function (for navigation links)
+            window.closeMobileMenu = function () {
+                isMenuOpen = false;
+                burgerMenu.classList.remove('active');
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            };
+
+            // Burger menu click handler - works as both open and close
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMobileMenu();
+                });
+            }
+
+            // Close menu when clicking outside content
+            if (mobileNavOverlay) {
+                mobileNavOverlay.addEventListener('click', function (e) {
+                    if (e.target === mobileNavOverlay) {
+                        toggleMobileMenu(); // This will close since menu is open
+                    }
+                });
+            }
+
+            // Initialize language state
+            initializeLanguageState();
+        });
+
+        // Initialize language state function
+        function initializeLanguageState() {
+            // Set initial language (default to English)
+            window.currentLanguage = 'ro';
+
+            // Set initial active states for mobile buttons
+            updateMobileLanguageButtons('ro');
+
+            // Show correct mobile navigation
+            showMobileNavForLanguage('ro');
+        }
+
+        // Update mobile language button states
+        function updateMobileLanguageButtons(lang) {
+            // Remove active class from all mobile buttons
+            const mobileEnBtn = document.getElementById('mobile-en-btn');
+            const mobileRoBtn = document.getElementById('mobile-ro-btn');
+
+            if (mobileEnBtn) mobileEnBtn.classList.remove('active');
+            if (mobileRoBtn) mobileRoBtn.classList.remove('active');
+
+            // Add active class to selected button
+            const activeMobileBtn = document.getElementById('mobile-' + lang + '-btn');
+            if (activeMobileBtn) {
+                activeMobileBtn.classList.add('active');
+            }
+        }
+
+        // Show mobile navigation for specific language
+        function showMobileNavForLanguage(lang) {
+            // Hide all mobile navigations
+            const mobileNavEn = document.getElementById('mobile-nav-en');
+            const mobileNavRo = document.getElementById('mobile-nav-ro');
+
+            if (mobileNavEn) mobileNavEn.style.display = 'none';
+            if (mobileNavRo) mobileNavRo.style.display = 'none';
+
+            // Show selected mobile navigation
+            const selectedMobileNav = document.getElementById('mobile-nav-' + lang);
+            if (selectedMobileNav) {
+                selectedMobileNav.style.display = 'block';
+            }
+        }
+        // Updated switchLanguage function with proper mobile support
+        function switchLanguage(lang) {
+            // Store current language
+            window.currentLanguage = lang;
+
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
+
+            // Show selected language content
+            const selectedContent = document.getElementById('content-' + lang);
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+                selectedContent.style.display = 'block';
+            }
+
+            // Update desktop language buttons
+            document.querySelectorAll('.lang-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const desktopBtn = document.getElementById(lang + '-btn');
+            if (desktopBtn) {
+                desktopBtn.classList.add('active');
+            }
+
+            // Update mobile language buttons
+            updateMobileLanguageButtons(lang);
+
+            // Update mobile navigation
+            showMobileNavForLanguage(lang);
+
+            // Update desktop navigation
+            document.querySelectorAll('#nav-en, #nav-ro').forEach(nav => {
+                nav.style.display = 'none';
+            });
+            const selectedDesktopNav = document.getElementById('nav-' + lang);
+            if (selectedDesktopNav) {
+                selectedDesktopNav.style.display = 'block';
+            }
+
+            // FIXED: Show the home page after language switch
+            showPage('home');
+        }
+        function initializeLanguageState() {
+            // Set initial language (default to Romanian)
+            window.currentLanguage = 'ro';
+
+            // Set initial active states for mobile buttons
+            updateMobileLanguageButtons('ro');
+
+            // Show correct mobile navigation
+            showMobileNavForLanguage('ro');
+
+            // Show the home page initially
+            showPage('home');
+        }
+    </script>
+</body>
+
+
+</html>
