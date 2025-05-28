@@ -297,6 +297,10 @@
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <div class="mobile-nav-content">
+            <div class="mobile-lang-switcher">
+            <button onclick="switchLanguage('ro')" class="active" id="mobile-ro-btn">RO</button>
+            <button onclick="switchLanguage('en')" id="mobile-en-btn">EN</button>
+        </div>
             <!-- English Mobile Menu -->
             <div id="mobile-nav-en" class="mobile-nav-lang" style="display: none;">
                 <a href="#" onclick="showPage('home'); closeMobileMenu();">
@@ -347,11 +351,7 @@
                 </a>
             </div>
 
-            <!-- Mobile Language Switcher -->
-            <div class="mobile-lang-switcher">
-                <button onclick="switchLanguage('ro')" class="active" id="mobile-ro-btn">RO</button>
-                <button onclick="switchLanguage('en')" id="mobile-en-btn">EN</button>
-            </div>
+            
         </div>
     </div>
     </div>
