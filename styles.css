@@ -138,16 +138,21 @@ body {
     transform: translateY(-2px);
 }
 
-.mobile-nav-content a i {
-    margin-right: 10px;
+.mobile-nav-content {
+    text-align: center;
+    padding: 80px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Language switcher in mobile menu */
 .mobile-lang-switcher {
-    margin-top: 30px;
+    margin-top: 0px; /* Remove top margin since it's now at top */
+    margin-bottom: 30px; /* Add bottom margin to separate from menu */
     display: flex;
     gap: 10px;
     justify-content: center;
+    order: -1; /* This will move it to the top of the flex container */
 }
 
 .mobile-lang-switcher button {
