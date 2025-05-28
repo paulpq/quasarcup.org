@@ -11,9 +11,8 @@
 
 
     <style>
-        /* ADD THIS CSS TO YOUR styles123.css FILE */
 
-        /* Burger Menu Styles */
+        /* Burger Menu */
         .burger-menu {
             display: none;
             position: fixed;
@@ -114,7 +113,7 @@
             margin-right: 10px;
         }
 
-        /* Language switcher in mobile menu */
+        /* Language switcher on mobile */
         .mobile-lang-switcher {
             margin-top: 30px;
             display: flex;
@@ -154,7 +153,7 @@
                 display: none;
             }
 
-            /* Adjust header padding for mobile */
+            /* header padding for mobile */
             .header {
                 padding: 15px 0;
             }
@@ -178,11 +177,8 @@
 
         .team-member-photo {
             border: 3px solid #4b0082;
-            /* Purple border matching your header gradient */
             border-radius: 10px;
-            /* Rounded corners */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            /* Subtle shadow for depth */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             /* Smooth transition for hover effect */
         }
@@ -207,7 +203,7 @@
             font-size: 24px;
             letter-spacing: 2px;
             padding-left: 0;
-            /* This aligns the C with the Q */
+            /* This aligns the C with the Q  second time*/
         }
 
         .team-member-photo:hover {
@@ -285,7 +281,6 @@
 </head>
 
 <body>
-    <!-- ADD THIS HTML RIGHT AFTER THE OPENING <body> TAG -->
     <button class="burger-menu" id="burgerMenu">
         <div class="burger-icon">
             <div class="burger-line"></div>
@@ -370,23 +365,23 @@
     </div>
     <!--  -->
     <div class="navigation lang-content" id="nav-en" style="display: none;">
-        <a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> HOME</a>
-        <a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> ABOUT</a>
-        <a href="#" onclick="showPage('participate')"><i class="fas fa-user-plus"></i> PARTICIPATE</a>
-        <a href="#" onclick="showPage('archive')"><i class="fas fa-archive"></i> ARCHIVE</a>
-        <a href="#" onclick="showPage('links')"><i class="fas fa-link"></i> LINKS</a>
-        <a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> CONTACT</a>
-        <a href="#" onclick="showPage('news')"><i class="fas fa-newspaper"></i> NEWS</a>
+        <a href="Home" onclick="showPage('home')"><i class="fas fa-home"></i> HOME</a>
+        <a href="About" onclick="showPage('about')"><i class="fas fa-info-circle"></i> ABOUT</a>
+        <a href="Participate" onclick="showPage('participate')"><i class="fas fa-user-plus"></i> PARTICIPATE</a>
+        <a href="Archive" onclick="showPage('archive')"><i class="fas fa-archive"></i> ARCHIVE</a>
+        <a href="Links" onclick="showPage('links')"><i class="fas fa-link"></i> LINKS</a>
+        <a href="Contact" onclick="showPage('contact')"><i class="fas fa-envelope"></i> CONTACT</a>
+        <a href="News" onclick="showPage('news')"><i class="fas fa-newspaper"></i> NEWS</a>
     </div>
     <!-- Romanian Navigation -->
     <div class="navigation lang-content active" id="nav-ro" style="display: block;">
-        <a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> ACASĂ</a>
-        <a href="#" onclick="showPage('about')"><i class="fas fa-info-circle"></i> DESPRE</a>
-        <a href="#" onclick="showPage('participate')"><i class="fas fa-user-plus"></i> PARTICIPĂ</a>
-        <a href="#" onclick="showPage('archive')"><i class="fas fa-archive"></i> ARHIVĂ</a>
-        <a href="#" onclick="showPage('links')"><i class="fas fa-link"></i> LINKURI</a>
-        <a href="#" onclick="showPage('contact')"><i class="fas fa-envelope"></i> CONTACT</a>
-        <a href="#" onclick="showPage('news')"><i class="fas fa-newspaper"></i> ȘTIRI</a>
+        <a href="Acasă" onclick="showPage('home')"><i class="fas fa-home"></i> ACASĂ</a>
+        <a href="Despre" onclick="showPage('about')"><i class="fas fa-info-circle"></i> DESPRE</a>
+        <a href="Participă" onclick="showPage('participate')"><i class="fas fa-user-plus"></i> PARTICIPĂ</a>
+        <a href="Arhivă" onclick="showPage('archive')"><i class="fas fa-archive"></i> ARHIVĂ</a>
+        <a href="Linkuri" onclick="showPage('links')"><i class="fas fa-link"></i> LINKURI</a>
+        <a href="Contact" onclick="showPage('contact')"><i class="fas fa-envelope"></i> CONTACT</a>
+        <a href="Știri" onclick="showPage('news')"><i class="fas fa-newspaper"></i> ȘTIRI</a>
     </div>
     <!-- English Content -->
     <div id="content-en" class="lang-content">
