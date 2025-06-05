@@ -1,21 +1,149 @@
 <!DOCTYPE html>
-<html lang="ro" >
+<html lang="ro">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quasar Cup</title>
+
+    <!-- Primary Meta Tags -->
+    <title>Quasar Cup 2025 - Concurs Internațional de Fizică și Astrofizică | International Physics and Astrophysics
+        Competition</title>
+    <meta name="title"
+        content="Quasar Cup 2025 - Concurs Internațional de Fizică și Astrofizică | International Physics and Astrophysics Competition">
+    <meta name="description"
+        content="Concurs internațional de fizică și astrofizică pentru elevi și studenți din Moldova și România. Provocări complexe, gândire inovatoare și experiență pentru olimpiade precum IPhO, EuPhO, APhO, IOAA. | International physics and astrophysics competition for high school and undergraduate students from Moldova and Romania.">
+    <meta name="keywords"
+        content="Quasar Cup, fizică, physics, astrofizică, astrophysics, concurs fizică, physics competition, olimpiadă, olympiad, IPhO, EuPhO, APhO, IOAA, Moldova, România, Romania, educație, education, știință, science, @quasarcup">
+    <meta name="author" content="Quasar Cup">
+    <meta name="robots" content="index, follow">
+
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="ro" href="https://quasarcup.com/">
+    <link rel="alternate" hreflang="en" href="https://quasarcup.com/en/">
+    <link rel="canonical" href="https://quasarcup.com/">
+
+    <!-- Favicon -->
     <link rel="icon" href="logoquasar.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 
-
     <style>
+        :root {
+            --primary-color: #230050;
+            --background-color: #ffffff;
+            --text-color: #333333;
+            --box-bg: rgba(35, 0, 80, 0.05);
+            --countdown-bg: rgba(35, 0, 80, 0.1);
+            --countdown-text: #230050;
+            --countdown-label: #666;
+        }
 
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.95) !important;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Enhanced Countdown Styling */
+        .countdown-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid #230050;
+            position: relative;
+        }
+
+        .countdown-container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid rgba(35, 0, 80, 0.3);
+            border-radius: 17px;
+            pointer-events: none;
+        }
+
+        .countdown-container h3 {
+            margin-bottom: 25px;
+            color: var(--countdown-text);
+            font-size: 1.5em;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-item {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            min-width: 100px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-item span:first-child {
+            font-size: 2.8em;
+            font-weight: bold;
+            color: var(--countdown-text);
+            display: block;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .countdown-item .label {
+            font-size: 1em;
+            color: var(--countdown-label);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .countdown {
+                gap: 15px;
+            }
+
+            .countdown-item {
+                min-width: 70px;
+                padding: 10px;
+            }
+
+            .countdown-item span:first-child {
+                font-size: 2em;
+            }
+
+            .countdown-item .label {
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 
 
 <body>
+
+
     <button class="burger-menu" id="burgerMenu">
         <div class="burger-icon">
             <div class="burger-line"></div>
@@ -28,9 +156,9 @@
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <div class="mobile-nav-content">
             <div class="mobile-lang-switcher">
-            <button onclick="switchLanguage('ro')" class="active" id="mobile-ro-btn">RO</button>
-            <button onclick="switchLanguage('en')" id="mobile-en-btn">EN</button>
-        </div>
+                <button onclick="switchLanguage('ro')" class="active" id="mobile-ro-btn">RO</button>
+                <button onclick="switchLanguage('en')" id="mobile-en-btn">EN</button>
+            </div>
             <!-- English Mobile Menu -->
             <div id="mobile-nav-en" class="mobile-nav-lang" style="display: none;">
                 <a href="#" onclick="showPage('home'); closeMobileMenu();">
@@ -81,7 +209,7 @@
                 </a>
             </div>
 
-            
+
         </div>
     </div>
     </div>
@@ -131,119 +259,134 @@
 
             <div class="info-box">
                 <h2>Welcome to Quasar Cup 2025 first edition!</h2>
-                <p>Quasar Cup is a physics competition for high school students and undergraduates from all over the
-                    world. The
-                    competition
-                    challenges participants to solve complex physics and/or astrophysics problems, encouraging
-                    innovative thinking and
-                    advanced scientific knowledge.</p>
-                <p>Join thousands of talented students from across the globe in this competition.
-                    Registration is now open for the 2025 first edition!</p>
+                <p>Quasar Cup is an international physics and astrophysics competition for high school students and
+                    undergraduates from Moldova and Romania. The competition challenges participants to solve complex
+                    physics and astrophysics problems, encouraging innovative thinking and deepening scientific
+                    knowledge. Through this competition, participants gain valuable experience for other competitions
+                    and olympiads such as IPhO, EuPhO, APhO, IOAA, and Physics Cup. Join this prestigious competition –
+                    registrations are now open for the first edition in 2025!</p>
+
+                <div class="countdown-container">
+                    <h3>Registration Opens In:</h3>
+                    <div id="countdown-en" class="countdown">
+                        <div class="countdown-item">
+                            <span class="days">00</span>
+                            <span class="label">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="hours">00</span>
+                            <span class="label">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="minutes">00</span>
+                            <span class="label">Minutes</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="seconds">00</span>
+                            <span class="label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- About Page -->
         <div id="about-en" class="content page-content">
             <h1>About Quasar Cup</h1>
-
             <div class="about-box">
+                <h2>Competition Description</h2>
+                <p>The competition consists of a series of monthly competitions, each edition including two tests - one
+                    in astronomy and one in physics, each having 4 problems designed by respective authors. The problems
+                    have increasing difficulty, each with sub-points that require in-depth knowledge. One week after the
+                    problems are published, participants are provided with a handout containing the necessary theory,
+                    and at the end of the month, solutions and results are published. The ranking will include both a
+                    cumulative section and separate rankings for each problem. Symbolic prizes are awarded to the
+                    winners.</p>
+
+                <h2>Competition Format</h2>
+                <b>Two main tests:</b>
+                <p>One in astronomy-astrophysics and one in physics, each having 4 problems with sub-points of
+                    increasing difficulty.</p>
+                <b>Solving time:</b>
+                <p>One month for solution.</p>
+                <b>Theoretical Handout</b>
+                <p>You can find it on the links page, it will guide you in solving the problems, it will be uploaded 1
+                    week after the start of the competition.</p>
+                <b>Scoring:</b>
+                <p>Each problem has a score of 100 points, with a 50% bonus for solutions submitted in the first week.
+                </p>
+                <b>Penalty:</b>
+                <p>10% penalty for incorrect attempts at individual sub-points.</p>
+
+                <h2>Regulations</h2>
+                <p>1. The monthly competition publishes four problems to be solved competitively, providing theoretical
+                    materials and detailed solutions.</p>
+                <p>2. Participants register via Google Forms and submit scanned or LaTeX format solutions via email.</p>
+                <p>3. Scoring: Each problem is worth 100 points; 50% bonus for solutions from the first week, with a 10%
+                    penalty for wrong sub-points. Results will be sent weekly.</p>
+
+                <h1>About Us:</h1>
                 <div class="team-member">
                     <img src="images\bogdan1.jpg" alt="Ciocârlan Bogdan-Mihai" class="team-member-photo" width="300"
                         height="300">
                     <div class="team-member-info">
                         <b>Ciocârlan Bogdan-Mihai</b>
-                        <p>Hi! I'm Bogdan, and I love physics and astronomy. Last year, I won the gold medal at IOAA, and
-                            this
-                            experience has shown me how fascinating the Universe can be when you look at it through the
-                            lens
-                            of science. I'm looking forward to helping you discover physics in a new way, with clear and
-                            diverse examples that will stimulate your curiosity. I want to collaborate openly, and for
-                            you to be not
-                            only my students, but also my friends in this adventure of knowledge!</p>
+                        <p>Hi! I'm Bogdan and I love physics and astronomy. This year I won the gold medal at IOAA, and
+                            this experience has shown me how fascinating the Universe can be when you look at it through
+                            the lens of science. I look forward to helping you discover physics in a new way, with clear
+                            and varied examples that will stimulate your curiosity. I want us to collaborate openly and
+                            for you to be not just my students, but also my friends in this adventure of knowledge!</p>
                     </div>
                 </div>
                 <div class="team-member">
                     <img src="images\darius.jpg" alt="Darius Graur" class="team-member-photo" width="300" height="300">
                     <div class="team-member-info">
                         <b>Darius Graur</b>
-                        <p>Hi! I'm Darius, and I'm passionate about physics. I participated in IPhO and had the
-                            opportunity to
-                            deepen essential concepts in physics. The contest is a way to
-                            share this enthusiasm with you and encourage the deepening of scientific knowledge
-                            in an interactive and challenging way. I look forward to collaborating with each of you
-                            to explore as many fascinating aspects of physics as possible.</p>
+                        <p>Hi! I'm Darius and I'm passionate about physics. I participated in IPhO and had the
+                            opportunity to deepen essential concepts in physics. The competition is for me a way to
+                            share this enthusiasm with you and encourage the deepening of scientific knowledge in an
+                            interactive and challenging way. I look forward to collaborating with each of you to explore
+                            as many fascinating aspects of physics as possible.</p>
                     </div>
                 </div>
                 <div class="team-member">
                     <img src="images\vlad.jpg" alt="Vlad Smochină" class="team-member-photo" width="300" height="300">
                     <div class="team-member-info">
                         <b>Vlad Smochină</b>
-                        <p>Hello! My name is Vlad, and I am an Olympian in mathematics and astronomy. I have had the
-                            privilege
-                            of participating in various international competitions, and I want to support the development
-                            of a passion for science among young talents. This competition is an ideal
-                            setting to learn and face interesting challenges, and my goal is to guide
-                            you on this path of learning and discovery.</p>
+                        <p>Hi! My name is Vlad and I am an Olympian in mathematics and astronomy. I have had the
+                            privilege of participating in various international competitions and I want to support the
+                            development of passion for science among young talents. This competition represents an ideal
+                            framework for learning and facing interesting challenges, and my goal is to guide you on
+                            this path of learning and discovery.</p>
                     </div>
                 </div>
                 <div class="team-member">
                     <img src="images\alex.jpg" alt="Alex Secrieru" class="team-member-photo" width="300" height="300">
                     <div class="team-member-info">
                         <b>Alex Secrieru</b>
-                        <p>Hi! I'm Alex Secrieru, and I'm passionate about physics and how this science helps us to
-                            understand the world in depth. This year, I had the honor of representing Moldova at the
-                            International Physics Olympiad (IPhO & EuPho), from which I returned with 2 bronze medals.
-                            It was an intense experience, which showed me how beautiful and challenging physics can be
-                            when you really look at it. I want to show you that physics is not just about theory, but
-                            also intuition, discovery, and the joy of asking questions. I hope we can learn together, in
-                            an open, clear, and friendly way. Let's make physics an adventure of knowledge!</p>
+                        <p>Hi! I'm Alex Secrieru and I'm passionate about physics and how this science helps us
+                            understand the world in depth. This year I had the honor of representing Moldova at the
+                            International Physics Olympiad (IPhO & EuPhO), from where I returned with 2 bronze medals.
+                            It was an intense experience that showed me how beautiful and challenging physics can be
+                            when you really look at it. I want to show you that physics is not just theory, but also
+                            intuition, discovery, and the joy of asking questions. I hope we can learn together, in an
+                            open, clear, and friendly way. Let's make physics an adventure of knowledge!</p>
                     </div>
                 </div>
-
                 <div class="team-member">
                     <img src="images\paul.jpg" alt="Paul Tichișanu" class="team-member-photo" width="300" height="300">
                     <div class="team-member-info">
                         <b>Paul Tichișanu</b>
-                        <p>Hi!
-I'm Paul Tichişanu, and I'm passionate about physics, a field that fascinates me with the way it explains the universe and the laws that govern it. For the past year, I've participated in national olympiads, experiences that have strengthened my desire to explore the world through the lens of science.
-
-I enjoy learning, sharing what I know, and turning complex concepts into clear and engaging ideas. I also created this website with the goal of bringing science closer to you. I hope you find it useful, inspiring, and that we become fellow explorers on this fascinating journey through the world of physics!</p>
+                        <p>Hi! I'm Paul Tichișanu and I'm passionate about physics, a field that fascinates me with how
+                            it explains the Universe and the laws that govern it. Over the past year, I've been
+                            participating in national olympiads, experiences that have strengthened my desire to explore
+                            the world through the lens of science. I enjoy learning, sharing what I know, and
+                            transforming complex concepts into clear and engaging ideas. I also created this website
+                            with the goal of bringing science closer to you. I hope you find it useful, inspiring, and
+                            that we become fellow explorers on this fascinating journey through the world of physics!
+                        </p>
                     </div>
                 </div>
-
-                <h2>About the contest</h2>
-                <p>A participant can register for up to two probes: one in Physics and one in Astrophysics. Each probe
-                    consists of solving four problems of increasing difficulty over the course of one month.
-                    Participation in one or both probes is allowed.
-
-                    The rankings will be separated into two categories: international and Romanian/Moldovan
-                    participants. The top 3 winners in the local (Romanian/Moldovan) cup will receive medals and printed
-                    diplomas (or other branded merch in the future).
-
-                    International participants will receive electronic diplomas and, of course, valuable experience for
-                    future Olympiads and the Physics Cup. <i> (Please note that physical prizes for international
-                        participants are not available due to high delivery costs and additional taxes.)</i></p>
-
-                <h2>Competition Format</h2>
-
-                <b>Two probes, consisting of 4 problems:</b>
-                <p>One in astronomy/astrophysics and one in physics, each with problems of increasing difficulty.
-                </p>
-                <b>Time for solving the problems:</b>
-                <p> 1 month for both probes.</p>
-                <b>Hints:</b>
-                <p>Published a week after the problems were released.
-                    This is intended to provide information
-                    needed to help you solve the problems and support you in deepening your knowledge.
-                </p>
-                <b>Scoring:</b>
-                <p>Each problem has a score of 100 points, with a 50% bonus for solutions submitted in the first
-                    week.
-                </p>
-
-
-                <b> Penalty:</b>
-                <p>10% penalty for incorrect attempts on individual sub-points.</p>
             </div>
         </div>
 
@@ -253,21 +396,21 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
 
             <div class="participate-box">
                 <h2>Registration Process</h2>
-                <p>Registration for Quasar Cup 2025 is open 2 weeks before the competition. To register,
+                <p>Registration for Quasar Cup 2025 opens on June 7th, 2025. To register,
                     students must complete the Google Forms link displayed on the website.</p>
 
                 <h2>Eligibility</h2>
                 <p>Quasar Cup is open to high school and undergraduate students worldwide who have not yet completed
                     their first degree. There are no age restrictions, though participants' age should typically range
-                    from 16
-                    to 22.</p>
+                    from 16 to 22.</p>
 
                 <h2>Competition Schedule</h2>
-                <p>The 2025 competition will begin on June 1st, 2025. Problems are released on a scheduled basis, with
+                <p>The 2025 competition will begin after registration closes. Problems will be released on a scheduled
+                    basis, with
                     specific deadlines for submissions.</p>
 
                 <div class="registration" style="margin-top: 30px;">
-                    <a href="https://forms.gle/2DvaJfCgG1jizuzX6">Register Now for the next Quasar Cup</a>
+                    <a href="https://forms.gle/2DvaJfCgG1jizuzX6">Register Now for Quasar Cup 2025</a>
                 </div>
             </div>
         </div>
@@ -299,31 +442,132 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
             <h1>Useful Links</h1>
 
             <div class="links-box">
+                <h2>Quasar Cup Handouts</h2>
+                <div class="links-grid">
+                    <div class="link-item">
+                        <h3>Physics Handouts</h3>
+                        <p>Theoretical materials for physics problems.</p>
+                        <div class="handout-links">
+                            <p class="coming-soon">Handouts will be available one week after the competition starts.</p>
+                            <!-- Future handout links will be added here -->
+                            <!-- Example format:
+                            <div class="handout-item">
+                                <span class="handout-name">June 2025 Physics Handout</span>
+                                <a href="handouts/physics_june_2025.pdf" class="download-btn" target="_blank">
+                                    <i class="fas fa-download"></i> Download PDF
+                                </a>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>Astronomy Handouts</h3>
+                        <p>Theoretical materials for astronomy problems.</p>
+                        <div class="handout-links">
+                            <p class="coming-soon">Handouts will be available one week after the competition starts.</p>
+                            <!-- Future handout links will be added here -->
+                            <!-- Example format:
+                            <div class="handout-item">
+                                <span class="handout-name">June 2025 Astronomy Handout</span>
+                                <a href="handouts/astronomy_june_2025.pdf" class="download-btn" target="_blank">
+                                    <i class="fas fa-download"></i> Download PDF
+                                </a>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .handout-links {
+                        margin-top: 10px;
+                    }
+
+                    .coming-soon {
+                        color: #666;
+                        font-style: italic;
+                        font-size: 0.9em;
+                    }
+
+                    .handout-item {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 10px 0;
+                        padding: 10px;
+                        background: #f8f9fa;
+                        border-radius: 5px;
+                        transition: background-color 0.3s ease;
+                    }
+
+                    .handout-item:hover {
+                        background: #e9ecef;
+                    }
+
+                    .handout-name {
+                        font-weight: 500;
+                        color: #333;
+                    }
+
+                    .download-btn {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        padding: 8px 16px;
+                        background-color: #0066cc;
+                        color: white;
+                        border-radius: 4px;
+                        text-decoration: none;
+                        font-size: 0.9em;
+                        transition: background-color 0.3s ease;
+                    }
+
+                    .download-btn:hover {
+                        background-color: #0052a3;
+                    }
+
+                    .download-btn i {
+                        font-size: 1em;
+                    }
+                </style>
+
                 <h2>Physics Resources</h2>
 
                 <div class="links-grid">
                     <div class="link-item">
                         <h3>Physics Education</h3>
-                        <p>Free resources for physics students and educators.</p>
-                        <a href="#">Visit Website</a>
+                        <p>Free resources and courses for physics students.</p>
+                        <a href="https://www.khanacademy.org/science/physics" target="_blank">Khan Academy Physics</a>
+                        <a href="https://openstax.org/subjects/science" target="_blank">OpenStax Physics Textbooks</a>
+                        <a href="https://www.physicsclassroom.com/" target="_blank">The Physics Classroom</a>
                     </div>
 
                     <div class="link-item">
-                        <h3>Problem-Solving Techniques</h3>
-                        <p>Learn advanced methods for solving physics problems.</p>
-                        <a href="#">Visit Website</a>
+                        <h3>Problem-Solving Resources</h3>
+                        <p>Advanced physics problems and solutions.</p>
+                        <a href="https://physicsolympiad.org/" target="_blank">Physics Olympiad</a>
+                        <a href="https://www.ioc.ee/~kalda/ipho/" target="_blank">IPhO Problems Archive</a>
+                        <a href="https://www.aapt.org/physicsteam/2019/program.cfm" target="_blank">US Physics Team
+                            Resources</a>
                     </div>
 
                     <div class="link-item">
-                        <h3>Physics Journals</h3>
-                        <p>Access to academic journals and publications.</p>
-                        <a href="#">Visit Website</a>
+                        <h3>Astronomy Resources</h3>
+                        <p>Astronomy and astrophysics learning materials.</p>
+                        <a href="https://www.ioaa-astro.org/" target="_blank">IOAA Official Website</a>
+                        <a href="https://astronomy.com/" target="_blank">Astronomy Magazine</a>
+                        <a href="https://www.space.com/" target="_blank">Space.com</a>
                     </div>
 
                     <div class="link-item">
-                        <h3>Simulation Tools</h3>
-                        <p>Interactive tools for physics simulations.</p>
-                        <a href="#">Visit Website</a>
+                        <h3>Interactive Tools</h3>
+                        <p>Physics simulations and interactive learning.</p>
+                        <a href="https://phet.colorado.edu/en/simulations/filter?subjects=physics" target="_blank">PhET
+                            Physics Simulations</a>
+                        <a href="https://www.wolframalpha.com/examples/science-and-technology/physics/"
+                            target="_blank">Wolfram Alpha Physics</a>
+                        <a href="https://www.geogebra.org/physics" target="_blank">GeoGebra Physics</a>
                     </div>
                 </div>
 
@@ -331,15 +575,19 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
 
                 <div class="links-grid">
                     <div class="link-item">
-                        <h3>International Physics Olympiad</h3>
-                        <p>Official website of the IPhO competition.</p>
-                        <a href="#">Visit Website</a>
+                        <h3>Physics Competitions</h3>
+                        <p>Major international physics competitions.</p>
+                        <a href="https://www.ipho-new.org/" target="_blank">International Physics Olympiad (IPhO)</a>
+                        <a href="https://eupho.ee/" target="_blank">European Physics Olympiad (EuPhO)</a>
+                        <a href="https://www.apho2024.org/" target="_blank">Asian Physics Olympiad (APhO)</a>
                     </div>
 
                     <div class="link-item">
-                        <h3>European Physics Society</h3>
-                        <p>Organization promoting physics in Europe.</p>
-                        <a href="#">Visit Website</a>
+                        <h3>Scientific Organizations</h3>
+                        <p>Major physics and astronomy organizations.</p>
+                        <a href="https://www.eps.org/" target="_blank">European Physical Society</a>
+                        <a href="https://www.aps.org/" target="_blank">American Physical Society</a>
+                        <a href="https://www.iop.org/" target="_blank">Institute of Physics</a>
                     </div>
                 </div>
             </div>
@@ -352,16 +600,8 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
 
             <div class="contact-box">
                 <h2>Get in Touch</h2>
-                <p>Have questions about Quasar Cup? Our team is here to help. Fill out the form below or contact us
-                    directly at quasarcup2025@gmail.com .</p>
-
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="text" placeholder="Subject" required>
-                    <textarea placeholder="Your Message" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+                <p>Have questions about Quasar Cup? Our team is here to help. Contact us directly at
+                    quasarcup2025@gmail.com</p>
             </div>
         </div>
 
@@ -371,22 +611,11 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
 
             <div class="news-box">
                 <div class="news-item">
-                    <div class="news-date">June 1st, 2025</div>
-                    <h3 class="news-title">Quasar Cup 2025 Competition Begins</h3>
-                    <p>The 2025 edition of Quasar Cup has officially begun! The first problem set is now available
-                        for
-                        all registered participants.</p>
-                </div>
-
-                <div class="news-item">
-                    <div class="news-date">August 16th, 2025</div>
+                    <div class="news-date">June 7th, 2025</div>
                     <h3 class="news-title">Registration Opens for Quasar Cup 2025</h3>
                     <p>Students worldwide can now register for the 2025 Quasar Cup competition. Early registration
-                        is
-                        encouraged as we anticipate high participation this year.</p>
+                        is encouraged as we anticipate high participation this year.</p>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -406,8 +635,35 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
 
 
             <div class="info-box">
-                <h2>Bine ați venit la Quasar 2025 ediția 1!</h2>
-                <p>Quasar Cup este un concurs internațional de fizică și astrofizică pentru elevi și studenți din Republica Moldova și România. Competiția provoacă participanții să rezolve probleme complexe de fizică și astrofizică, încurajând gândirea inovatoare și aprofundând cunoștințele științifice. În urma acestei competiții, participanții dobândesc experiență valoroasă pentru alte concursuri și olimpiade precum IPhO, EuPhO, APhO, IOAA și Physics Cup. Alăturați-vă acestei competiții prestigioase – înregistrările sunt acum deschise pentru ediția I din 2025!</p>
+                <h2>Bine ați venit la Quasar Cup 2025 ediția 1!</h2>
+                <p>Quasar Cup este un concurs internațional de fizică și astrofizică pentru elevi și studenți din
+                    Republica Moldova și România. Competiția provoacă participanții să rezolve probleme complexe de
+                    fizică și astrofizică, încurajând gândirea inovatoare și aprofundând cunoștințele științifice. În
+                    urma acestei competiții, participanții dobândesc experiență valoroasă pentru alte concursuri și
+                    olimpiade precum IPhO, EuPhO, APhO, IOAA și Physics Cup. Alăturați-vă acestei competiții
+                    prestigioase – înregistrările sunt acum deschise pentru ediția I din 2025!</p>
+
+                <div class="countdown-container">
+                    <h3>Înregistrările Încep În:</h3>
+                    <div id="countdown-ro" class="countdown">
+                        <div class="countdown-item">
+                            <span class="days">00</span>
+                            <span class="label">Zile</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="hours">00</span>
+                            <span class="label">Ore</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="minutes">00</span>
+                            <span class="label">Minute</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="seconds">00</span>
+                            <span class="label">Secunde</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -415,7 +671,7 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
         <div id="about-ro" class="content page-content">
             <h1>Despre Quasar Cup</h1>
             <div class="about-box">
-            
+
 
                 <h2>Descrierea concursului</h2>
                 <p>Concursul constă într-o serie de competiții
@@ -472,9 +728,8 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
                     din prima săptămână, cu penalizare de
                     10% pentru subpunctele greșite.
                     Rezultatele vor fi trimise săptămânal.</p>
-            </div>
-            
-         <h1>Despre noi:</h1>
+
+                <h1>Despre noi:</h1>
                 <div class="team-member">
                     <img src="images\bogdan1.jpg" alt="Ciocârlan Bogdan-Mihai" class="team-member-photo" width="300"
                         height="300">
@@ -519,7 +774,7 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
                         <b>Alex Secrieru</b>
                         <p>Salut! Sunt Alex Secrieru și sunt pasionat de fizică și de felul în care această știință ne
                             ajută să înțelegem lumea în profunzime. Anul acesta am avut onoarea să reprezint Moldova la
-                            Olimpiada Internațională de Fizică (IPhO & EuPho), de unde m-am întors cu 2 medalii de
+                            Olimpiada Internațională de Fizică (IPhO & EuPhO), de unde m-am întors cu 2 medalii de
                             bronz.
                             A fost o
                             experiență intensă, care mi-a demonstrat cât de frumoasă și provocatoare poate fi fizica
@@ -533,11 +788,20 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
                     <img src="images\paul.jpg" alt="Paul Tichișanu" class="team-member-photo" width="300" height="300">
                     <div class="team-member-info">
                         <b>Paul Tichișanu</b>
-                        <p>Salut! Sunt Paul Tichişanu și sunt pasionat de fizică, un domeniu care mă fascinează prin modul în care explică Universul și legile care îl guvernează.În ultimul an particip la olimpiade naționale, experiențe care mi-au întărit dorința de a explora lumea prin ochii științei.
+                        <p>Salut! Sunt Paul Tichișanu și sunt pasionat de fizică, un domeniu care mă fascinează prin
+                            modul
+                            în care explică Universul și legile care îl guvernează.În ultimul an particip la olimpiade
+                            naționale, experiențe care mi-au întărit dorința de a explora lumea prin ochii științei.
 
-Îmi place să învăț, să împărtășesc ceea ce știu și să transform conceptele complicate în idei clare și captivante. Tot eu am creat acest site, din dorința de a aduce știința mai aproape de voi. Sper să vă fie util, inspirațional și să devenim colegi într-o aventură fascinantă prin lumea fizicii!</p>
+                            Îmi place să învăț, să împărtășesc ceea ce știu și să transform conceptele complicate în
+                            idei
+                            clare și captivante. Tot eu am creat acest site, din dorința de a aduce știința mai aproape
+                            de
+                            voi. Sper să vă fie util, inspirațional și să devenim colegi într-o aventură fascinantă prin
+                            lumea fizicii!</p>
                     </div>
                 </div>
+            </div>
         </div>
 
         <!-- Participate Page ro -->
@@ -546,18 +810,16 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
 
             <div class="participate-box">
                 <h2>Procesul de Înregistrare</h2>
-                <p>Înscrierea la concursul Quasar se realizează prin Google Forms, cu două săptămâni înainte de data
-                    concursului.</p>
+                <p>Înscrierea la concursul Quasar se deschide pe 7 iunie 2025. Înscrierea se realizează prin Google
+                    Forms.</p>
 
                 <h2>Eligibilitate</h2>
                 <p>Quasar Cup este deschis elevilor de liceu și studenților din întreaga lume care nu și-au finalizat
-                    încă
-                    diploma universitară. Participanții trebuie să aibă până la 21 de ani în ziua concursului.
-                </p>
+                    încă diploma universitară. Participanții trebuie să aibă până la 21 de ani în ziua concursului.</p>
 
                 <h2>Programul Competiției</h2>
-                <p>Competiția 2025 a început pe 00.00.2025.
-                    Problemele sunt publicate pe baza unui program stabilit, cu termene specifice pentru trimiteri.</p>
+                <p>Competiția 2025 va începe după închiderea înscrierilor. Problemele vor fi publicate pe baza unui
+                    program stabilit, cu termene specifice pentru trimiteri.</p>
 
                 <div class="registration" style="margin-top: 30px;">
                     <a href="https://forms.gle/Vaxzq83Ni5iN1sMC6">Înregistrează-te Acum pentru Quasar Cup 2025</a>
@@ -566,80 +828,172 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
         </div>
 
         <!-- Archive Page -->
-        <<div id="archive-ro" class="content page-content">
-    <h1>Arhiva Competițiilor Anterioare</h1>
+        <div id="archive-ro" class="content page-content">
+            <h1>Arhiva Competițiilor Anterioare</h1>
 
-    <div class="archive-box">
-        <h2>Seturi de Probleme</h2>
-        <h3>Se vor afişa în la începerea concursului <\h3>
-     <!--   <p>În această secțiune veți găsi problemele din
-            edițiile trecute ale concursului, împreună cu
-            soluțiile oficiale și baremele de punctaj.</p>
+            <div class="archive-box">
+                <h2>Seturi de Probleme</h2>
+                <h3>Se vor afișa la începerea concursului</h3>
 
-        <div class="1edition">
-            <h1>Ediția 1</h1>
-            <h2>Probleme:</h2>
-            
-            
-            
-            <div class="problem-item">
-                <div class="problem-title">Astronomie Celestială</div>
-                <a href="problems/Astronomie Cereasca 1.pdf" target="_blank" class="download-btn">Descarcă PDF</a>
+                <h2>Câștigătorii Anteriori</h2>
+                <p>Răsfoiți galeria noastră de onoare cu câștigătorii din competițiile Quasar Cup anterioare.</p>
             </div>
-
-            <div class="problem-item">
-                <div class="problem-title">Fizică - Cinematică</div>
-                <a href="problems/Fizica 1.pdf" target="_blank" class="download-btn">Descarcă PDF</a>
-            </div>
-
-            <h2>Bareme:</h2>
-            <div class="problem-item">
-                <div class="problem-title">Astronomie Barem</div>
-                <a href="problems/Astronomie Cereasca 1.pdf" target="_blank" class="download-btn">Descarcă PDF</a>
-            </div>
-
-            <div class="problem-item">
-                <div class="problem-title">Fizică Barem</div>
-                <a href="problems/Fizica 1.pdf" target="_blank" class="download-btn">Descarcă PDF</a>
-            </div> -->
-            
-        </div> 
-
-        <h2>Câștigătorii Anteriori</h2>
-        <p>Răsfoiți galeria noastră de onoare cu câștigătorii din competițiile Quasar Cup anterioare.</p>
-    </div>
-</div>
+        </div>
 
         <!-- Links Page -->
         <div id="links-ro" class="content page-content">
             <h1>Linkuri Utile</h1>
 
             <div class="links-box">
+                <h2>Materiale Quasar Cup</h2>
+                <div class="links-grid">
+                    <div class="link-item">
+                        <h3>Materiale Fizică</h3>
+                        <p>Materiale teoretice pentru problemele de fizică.</p>
+                        <div class="handout-links">
+                            <p class="coming-soon">Materialele vor fi disponibile la o săptămână după începerea
+                                concursului.</p>
+                            <!-- Future handout links will be added here -->
+                            <!-- Example format:
+                            <div class="handout-item">
+                                <span class="handout-name">Material Fizică Iunie 2025</span>
+                                <a href="handouts/physics_june_2025.pdf" class="download-btn" target="_blank">
+                                    <i class="fas fa-download"></i> Descarcă PDF
+                                </a>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>Materiale Astronomie</h3>
+                        <p>Materiale teoretice pentru problemele de astronomie.</p>
+                        <div class="handout-links">
+                            <p class="coming-soon">Materialele vor fi disponibile la o săptămână după începerea
+                                concursului.</p>
+                            <!-- Future handout links will be added here -->
+                            <!-- Example format:
+                            <div class="handout-item">
+                                <span class="handout-name">Material Astronomie Iunie 2025</span>
+                                <a href="handouts/astronomy_june_2025.pdf" class="download-btn" target="_blank">
+                                    <i class="fas fa-download"></i> Descarcă PDF
+                                </a>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .handout-links {
+                        margin-top: 10px;
+                    }
+
+                    .coming-soon {
+                        color: #666;
+                        font-style: italic;
+                        font-size: 0.9em;
+                    }
+
+                    .handout-item {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 10px 0;
+                        padding: 10px;
+                        background: #f8f9fa;
+                        border-radius: 5px;
+                        transition: background-color 0.3s ease;
+                    }
+
+                    .handout-item:hover {
+                        background: #e9ecef;
+                    }
+
+                    .handout-name {
+                        font-weight: 500;
+                        color: #333;
+                    }
+
+                    .download-btn {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        padding: 8px 16px;
+                        background-color: #0066cc;
+                        color: white;
+                        border-radius: 4px;
+                        text-decoration: none;
+                        font-size: 0.9em;
+                        transition: background-color 0.3s ease;
+                    }
+
+                    .download-btn:hover {
+                        background-color: #0052a3;
+                    }
+
+                    .download-btn i {
+                        font-size: 1em;
+                    }
+                </style>
+
                 <h2>Resurse de Fizică</h2>
 
                 <div class="links-grid">
                     <div class="link-item">
-                        <h3>Educație în Fizică </h3>
-                        <p>Resurse gratuite pentru studenți și educatori în fizică.</p>
-                        <a href="#">Vizitează Site-ul</a>
+                        <h3>Educație în Fizică</h3>
+                        <p>Resurse și cursuri gratuite pentru studenți.</p>
+                        <a href="https://www.khanacademy.org/science/physics" target="_blank">Khan Academy Fizică</a>
+                        <a href="https://openstax.org/subjects/science" target="_blank">Manuale OpenStax Fizică</a>
+                        <a href="https://www.physicsclassroom.com/" target="_blank">The Physics Classroom</a>
                     </div>
 
                     <div class="link-item">
-                        <h3>Tehnici de Rezolvare a Problemelor</h3>
-                        <p>Învățați metode avansate pentru rezolvarea problemelor de fizică.</p>
-                        <a href="#">Vizitează Site-ul</a>
+                        <h3>Resurse pentru Rezolvarea Problemelor</h3>
+                        <p>Probleme avansate de fizică și soluții.</p>
+                        <a href="https://physicsolympiad.org/" target="_blank">Physics Olympiad</a>
+                        <a href="https://www.ioc.ee/~kalda/ipho/" target="_blank">Arhiva Probleme IPhO</a>
+                        <a href="https://www.aapt.org/physicsteam/2019/program.cfm" target="_blank">Resurse US Physics
+                            Team</a>
                     </div>
 
                     <div class="link-item">
-                        <h3>Jurnale de Fizică</h3>
-                        <p>Acces la jurnale academice și publicații.</p>
-                        <a href="#">Vizitează Site-ul</a>
+                        <h3>Astronomy Resources</h3>
+                        <p>Astronomy and astrophysics learning materials.</p>
+                        <a href="https://www.ioaa-astro.org/" target="_blank">Site Oficial IOAA</a>
+                        <a href="https://astronomy.com/" target="_blank">Revista Astronomy</a>
+                        <a href="https://www.space.com/" target="_blank">Space.com</a>
                     </div>
 
                     <div class="link-item">
-                        <h3>Instrumente de Simulare</h3>
-                        <p>Instrumente interactive pentru simulări de fizică.</p>
-                        <a href="#">Vizitează Site-ul</a>
+                        <h3>Interactive Tools</h3>
+                        <p>Physics simulations and interactive learning.</p>
+                        <a href="https://phet.colorado.edu/ro/simulations/filter?subjects=physics"
+                            target="_blank">Simulări PhET Fizică</a>
+                        <a href="https://www.wolframalpha.com/examples/science-and-technology/physics/"
+                            target="_blank">Wolfram Alpha Fizică</a>
+                        <a href="https://www.geogebra.org/physics" target="_blank">GeoGebra Fizică</a>
+                    </div>
+                </div>
+
+                <h2>Organizații Partenere</h2>
+
+                <div class="links-grid">
+                    <div class="link-item">
+                        <h3>Competiții de Fizică</h3>
+                        <p>Competiții internaționale majore de fizică.</p>
+                        <a href="https://www.ipho-new.org/" target="_blank">Olimpiada Internațională de Fizică
+                            (IPhO)</a>
+                        <a href="https://eupho.ee/" target="_blank">Olimpiada Europeană de Fizică (EuPhO)</a>
+                        <a href="https://www.apho2024.org/" target="_blank">Olimpiada Asiatică de Fizică (APhO)</a>
+                    </div>
+
+                    <div class="link-item">
+                        <h3>Organizații Științifice</h3>
+                        <p>Organizații majore de fizică și astronomie.</p>
+                        <a href="https://www.eps.org/" target="_blank">Societatea Europeană de Fizică</a>
+                        <a href="https://www.aps.org/" target="_blank">Societatea Americană de Fizică</a>
+                        <a href="https://www.iop.org/" target="_blank">Institutul de Fizică</a>
                     </div>
                 </div>
             </div>
@@ -651,16 +1005,8 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
 
             <div class="contact-box">
                 <h2>Ia Legătura cu Noi</h2>
-                <p>Ai întrebări despre Quasar Cup? Echipa noastră este aici pentru a ajuta. Completează formularul de
-                    mai jos sau contactează-ne direct la quasarcup2025@gmail.com</p>
-
-                <form class="contact-form">
-                    <input type="text" placeholder="Numele Tău" required>
-                    <input type="email" placeholder="Email-ul Tău" required>
-                    <input type="text" placeholder="Subiect" required>
-                    <textarea placeholder="Mesajul Tău" required></textarea>
-                    <button type="submit">Trimite Mesajul</button>
-                </form>
+                <p>Ai întrebări despre Quasar Cup? Echipa noastră este aici pentru a ajuta. Contactează-ne direct la
+                    quasarcup2025@gmail.com</p>
             </div>
         </div>
 
@@ -668,27 +1014,75 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
         <div id="news-ro" class="content page-content">
             <h1>Ultimele Știri</h1>
 
-            <!-- <div class="news-box">
+            <div class="news-box">
                 <div class="news-item">
-                    <div class="news-date">13 Octombrie 2024</div>
-                    <h3 class="news-title">Competiția Quasar Cup 2025 Începe</h3>
-                    <p>Ediția 2025 a Quasar Cup a început oficial! Primul set de probleme este acum disponibil pentru
-                        toți participanții înregistrați.</p>
-                </div> -->
-
-            <div class="news-item">
-                <div class="news-date">26 Mai 2025</div>
-                <h3 class="news-title">Se Deschide Înregistrarea pentru Quasar Cup 2025</h3>
-                <p>Studenții din întreaga lume se pot înregistra acum pentru competiția Quasar Cup 2025.
-                    Înregistrarea timpurie este încurajată deoarece anticipăm o participare ridicată anul acesta.
-                </p>
+                    <div class="news-date">7 Iunie 2025</div>
+                    <h3 class="news-title">Se Deschide Înregistrarea pentru Quasar Cup 2025</h3>
+                    <p>Studenții din întreaga lume se pot înregistra acum pentru competiția Quasar Cup 2025.
+                        Înregistrarea timpurie este încurajată deoarece anticipăm o participare ridicată anul acesta.
+                    </p>
+                </div>
             </div>
-
         </div>
     </div>
 
+    <!-- Social Media Overlay Button -->
+    <a href="https://www.instagram.com/quasarcup/" target="_blank" class="social-overlay-btn">
+        <i class="fab fa-instagram"></i>
+        <span class="social-overlay-text">@quasarcup</span>
+    </a>
 
+    <style>
+        .social-overlay-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background-color: rgba(35, 0, 80, 0.8);
+            /* Purple with transparency */
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            gap: 8px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
+        .social-overlay-btn:hover {
+            background-color: rgba(35, 0, 80, 1);
+            /* Solid purple on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-overlay-btn i {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .social-overlay-text {
+            font-weight: 500;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .social-overlay-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            .social-overlay-btn i {
+                font-size: 14px;
+            }
+        }
+    </style>
 
     <script src="script.js"></script>
     <script>
@@ -878,6 +1272,90 @@ I enjoy learning, sharing what I know, and turning complex concepts into clear a
             // Show the home page initially
             showPage('home');
         }
+
+        // Theme Toggle Function
+        function toggleTheme() {
+            const body = document.documentElement;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            body.setAttribute('data-theme', newTheme);
+
+            // Update button text and icon
+            const toggleButton = document.querySelector('.theme-toggle');
+            const toggleIcon = toggleButton.querySelector('i');
+            const toggleText = toggleButton.querySelector('.toggle-text');
+
+            if (newTheme === 'dark') {
+                toggleIcon.className = 'fas fa-sun';
+                toggleText.textContent = 'Light Mode';
+            } else {
+                toggleIcon.className = 'fas fa-moon';
+                toggleText.textContent = 'Dark Mode';
+            }
+
+            // Save preference
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme preference
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            // Update button state
+            const toggleButton = document.querySelector('.theme-toggle');
+            const toggleIcon = toggleButton.querySelector('i');
+            const toggleText = toggleButton.querySelector('.toggle-text');
+
+            if (savedTheme === 'dark') {
+                toggleIcon.className = 'fas fa-sun';
+                toggleText.textContent = 'Light Mode';
+            }
+        }
+
+        // Countdown Timer Function
+        function updateCountdown() {
+            const targetDate = new Date('June 7, 2025 00:00:00').getTime();
+
+            function update() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Update both English and Romanian countdowns
+                ['en', 'ro'].forEach(lang => {
+                    const countdown = document.getElementById(`countdown-${lang}`);
+                    if (countdown) {
+                        countdown.querySelector('.days').textContent = String(days).padStart(2, '0');
+                        countdown.querySelector('.hours').textContent = String(hours).padStart(2, '0');
+                        countdown.querySelector('.minutes').textContent = String(minutes).padStart(2, '0');
+                        countdown.querySelector('.seconds').textContent = String(seconds).padStart(2, '0');
+                    }
+                });
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    ['en', 'ro'].forEach(lang => {
+                        const container = document.getElementById(`countdown-${lang}`);
+                        if (container) {
+                            container.innerHTML = '<div class="countdown-item"><span class="registration-open">Registration is Open!</span></div>';
+                        }
+                    });
+                }
+            }
+
+            update();
+            const interval = setInterval(update, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCountdown();
+        });
     </script>
 </body>
 
