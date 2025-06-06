@@ -258,35 +258,13 @@
 
 
             <div class="info-box">
-                <h2>Welcome to Quasar Cup 2025 first edition!</h2>
-                <p>Quasar Cup is an international physics and astrophysics competition for high school students and
-                    undergraduates from Moldova and Romania. The competition challenges participants to solve complex
-                    physics and astrophysics problems, encouraging innovative thinking and deepening scientific
-                    knowledge. Through this competition, participants gain valuable experience for other competitions
-                    and olympiads such as IPhO, EuPhO, APhO, IOAA, and Physics Cup. Join this prestigious competition –
-                    registrations are now open for the first edition in 2025!</p>
-
-                <div class="countdown-container">
-                    <h3>Registration Opens In:</h3>
-                    <div id="countdown-en" class="countdown">
-                        <div class="countdown-item">
-                            <span class="days">00</span>
-                            <span class="label">Days</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="hours">00</span>
-                            <span class="label">Hours</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="minutes">00</span>
-                            <span class="label">Minutes</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="seconds">00</span>
-                            <span class="label">Seconds</span>
-                        </div>
-                    </div>
-                </div>
+                <h2>Welcome to Quasar Cup 2025 Edition 1!</h2>
+                <p>Quasar Cup is an international physics and astrophysics competition for high school and
+                    undergraduate students from Moldova and Romania. The competition challenges participants to solve
+                    complex physics and astrophysics problems, encouraging innovative thinking and deepening
+                    scientific knowledge. Through this competition, participants gain valuable experience for other
+                    competitions and olympiads such as IPhO, EuPhO, APhO, IOAA, and Physics Cup. Join this
+                    prestigious competition – registrations are now open for the 1st edition in 2025!</p>
             </div>
         </div>
 
@@ -642,28 +620,6 @@
                     urma acestei competiții, participanții dobândesc experiență valoroasă pentru alte concursuri și
                     olimpiade precum IPhO, EuPhO, APhO, IOAA și Physics Cup. Alăturați-vă acestei competiții
                     prestigioase – înregistrările sunt acum deschise pentru ediția I din 2025!</p>
-
-                <div class="countdown-container">
-                    <h3>Înregistrările Încep În:</h3>
-                    <div id="countdown-ro" class="countdown">
-                        <div class="countdown-item">
-                            <span class="days">00</span>
-                            <span class="label">Zile</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="hours">00</span>
-                            <span class="label">Ore</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="minutes">00</span>
-                            <span class="label">Minute</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="seconds">00</span>
-                            <span class="label">Secunde</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1314,47 +1270,8 @@
             }
         }
 
-        // Countdown Timer Function
-        function updateCountdown() {
-            const targetDate = new Date('June 7, 2025 00:00:00').getTime();
-
-            function update() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                // Update both English and Romanian countdowns
-                ['en', 'ro'].forEach(lang => {
-                    const countdown = document.getElementById(`countdown-${lang}`);
-                    if (countdown) {
-                        countdown.querySelector('.days').textContent = String(days).padStart(2, '0');
-                        countdown.querySelector('.hours').textContent = String(hours).padStart(2, '0');
-                        countdown.querySelector('.minutes').textContent = String(minutes).padStart(2, '0');
-                        countdown.querySelector('.seconds').textContent = String(seconds).padStart(2, '0');
-                    }
-                });
-
-                if (distance < 0) {
-                    clearInterval(interval);
-                    ['en', 'ro'].forEach(lang => {
-                        const container = document.getElementById(`countdown-${lang}`);
-                        if (container) {
-                            container.innerHTML = '<div class="countdown-item"><span class="registration-open">Registration is Open!</span></div>';
-                        }
-                    });
-                }
-            }
-
-            update();
-            const interval = setInterval(update, 1000);
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
-            updateCountdown();
+            loadTheme();
         });
     </script>
 </body>
