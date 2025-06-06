@@ -1,1 +1,9 @@
-Sitemap: https://quasarcup.org/sitemap.xml
+User-agent: *
+Allow: /
+Allow: /en/
+
+Sitemap: https://quasarcup.com/sitemap.xml
+
+# Prevent indexing of potential duplicate content
+Disallow: /*?*
+Disallow: /*&* 
