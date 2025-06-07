@@ -173,6 +173,49 @@ body {
     gap: 10px;
     justify-content: center;
 }
+/* Split button design for archive problems */
+.problem-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 4px solid #4b0082;
+}
+
+.problem-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.problem-title {
+    flex: 1;
+    padding: 20px 25px;
+    color: #4b0082;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.download-btn {
+    background: #4b0082;
+    color: white;
+    padding: 20px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+}
+
+.download-btn:hover {
+    background: #8a2be2;
+    color: white;
+}
 
 .mobile-lang-switcher button {
     padding: 10px 20px;
